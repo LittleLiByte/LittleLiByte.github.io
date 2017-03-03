@@ -23,15 +23,29 @@
     </url>
 
     <url>
+        <loc>http://little-byte.com/tags/Tinker/</loc>
+        <lastmod>2017-03-03T11:04:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D/</loc>
+        <lastmod>2017-03-03T11:04:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://little-byte.com/tags/Hexo/</loc>
-        <lastmod>2017-03-03T10:50:56.000Z</lastmod>
+        <lastmod>2017-03-03T11:06:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://little-byte.com/tags/YeLee/</loc>
-        <lastmod>2017-03-03T10:50:56.000Z</lastmod>
+        <lastmod>2017-03-03T11:06:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

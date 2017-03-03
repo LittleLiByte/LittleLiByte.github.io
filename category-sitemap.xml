@@ -14,8 +14,15 @@
     </url>
 
     <url>
+        <loc>http://little-byte.com/categories/Android/</loc>
+        <lastmod>2017-03-03T11:04:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://little-byte.com/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-        <lastmod>2017-03-03T10:50:56.000Z</lastmod>
+        <lastmod>2017-03-03T11:06:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
