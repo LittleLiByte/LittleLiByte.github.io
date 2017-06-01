@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://little-byte.com/"/>
-  <updated>2017-06-01T08:52:43.000Z</updated>
+  <updated>2017-06-01T08:57:48.000Z</updated>
   <id>http://little-byte.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://little-byte.com/2017/06/01/ReactNative-CodePush%E5%AE%9E%E8%B7%B5%E5%B0%8F%E7%BB%93/"/>
     <id>http://little-byte.com/2017/06/01/ReactNative-CodePush实践小结/</id>
     <published>2017-06-01T08:51:47.000Z</published>
-    <updated>2017-06-01T08:52:43.000Z</updated>
+    <updated>2017-06-01T08:57:48.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>CodePush</strong>是微软提供的一套可用于React Native和Cordova的热更新服务，国内也有类似的服务<strong>Pushy</strong>，从关注度和使用人数来说，CodePush完胜于Pushy（截至目前，CodePush在Github上Star数2900+，Pushy Star数600+，毕竟大公司的产品更让开发者心里有底，但CodePush是否真的绝对比Pushy要好不做评价）</p>
 <h2 id="CodePush-安装与注册"><a href="#CodePush-安装与注册" class="headerlink" title="CodePush 安装与注册"></a>CodePush 安装与注册</h2><h3 id="1-安装-CodePush-CLI"><a href="#1-安装-CodePush-CLI" class="headerlink" title="1.安装 CodePush CLI"></a>1.安装 CodePush CLI</h3><p>使用命令<code>npm install -g code-push-cli</code>安装CodePush终端</p>
@@ -113,7 +113,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CodePush&lt;/strong&gt;是微软提供的一套可用于React Native和Cordova的热更新服务，国内也有类似的
+      最近在React Native调研中使用了Code Push作为热更新实现方案，因此记录了一下实践过程和经验分享于此
     
     </summary>
     
