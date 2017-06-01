@@ -8,7 +8,7 @@
 
     <url>
         <loc>http://little-byte.com/2017/06/01/ReactNative-CodePush%E5%AE%9E%E8%B7%B5%E5%B0%8F%E7%BB%93/</loc>
-        <lastmod>2017-06-01T08:57:48.000Z</lastmod>
+        <lastmod>2017-06-01T10:52:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,15 +16,7 @@
 
     <url>
         <loc>http://little-byte.com/2016/08/10/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%85%A8%E8%AE%B0%E5%BD%95/</loc>
-        <lastmod>2017-03-03T11:06:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://little-byte.com/2017/02/28/Tinker%E8%B0%83%E7%A0%94/</loc>
-        <lastmod>2017-03-03T11:04:17.000Z</lastmod>
+        <lastmod>2017-06-01T10:50:59.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -32,7 +24,15 @@
 
     <url>
         <loc>http://little-byte.com/2016/08/20/openresty-rsa%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%BA%93/</loc>
-        <lastmod>2017-03-03T10:39:27.000Z</lastmod>
+        <lastmod>2017-06-01T10:50:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/2017/02/28/Tinker%E8%B0%83%E7%A0%94/</loc>
+        <lastmod>2017-06-01T10:50:43.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

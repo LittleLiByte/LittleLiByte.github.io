@@ -2,57 +2,64 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://little-byte.com/tags/RSA/</loc>
-        <lastmod>2017-03-03T10:39:27.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://little-byte.com/tags/Nginx/</loc>
-        <lastmod>2017-03-03T10:39:27.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://little-byte.com/tags/Lua/</loc>
-        <lastmod>2017-03-03T10:39:27.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://little-byte.com/tags/Tinker/</loc>
-        <lastmod>2017-03-03T11:04:17.000Z</lastmod>
+        <lastmod>2017-06-01T10:50:43.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://little-byte.com/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D/</loc>
-        <lastmod>2017-03-03T11:04:17.000Z</lastmod>
+        <lastmod>2017-06-01T10:50:43.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/tags/RSA/</loc>
+        <lastmod>2017-06-01T10:50:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/tags/Nginx/</loc>
+        <lastmod>2017-06-01T10:50:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/tags/Lua/</loc>
+        <lastmod>2017-06-01T10:50:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://little-byte.com/tags/Hexo/</loc>
-        <lastmod>2017-03-03T11:06:16.000Z</lastmod>
+        <lastmod>2017-06-01T10:50:59.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://little-byte.com/tags/YeLee/</loc>
-        <lastmod>2017-03-03T11:06:16.000Z</lastmod>
+        <lastmod>2017-06-01T10:50:59.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://little-byte.com/tags/react-native-codePush/</loc>
-        <lastmod>2017-06-01T08:57:48.000Z</lastmod>
+        <loc>http://little-byte.com/tags/react-native/</loc>
+        <lastmod>2017-06-01T10:52:48.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/tags/codePush/</loc>
+        <lastmod>2017-06-01T10:52:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
