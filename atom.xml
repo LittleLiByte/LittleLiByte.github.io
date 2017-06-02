@@ -190,7 +190,7 @@
     <link href="http://little-byte.com/2017/05/15/ReactNative%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
     <id>http://little-byte.com/2017/05/15/ReactNative学习路线/</id>
     <published>2017-05-15T04:20:07.000Z</published>
-    <updated>2017-06-02T04:23:23.000Z</updated>
+    <updated>2017-06-02T09:16:54.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="第一步-React-js基础学习"><a href="#第一步-React-js基础学习" class="headerlink" title="第一步 React.js基础学习"></a>第一步 React.js基础学习</h2><p>只推荐<strong><a href="http://www.runoob.com/react/react-tutorial.html" target="_blank" rel="external">菜鸟教程</a></strong>，章节分明有条理，讲解得也非常清晰，并且附带可以在线运行的实例。学习时间：0.5～1天基本可以完成学习</p>
 <h2 id="第二步-ES6-语法特性"><a href="#第二步-ES6-语法特性" class="headerlink" title="第二步 ES6 语法特性"></a>第二步 ES6 语法特性</h2><p>推荐搭配WebStorm 编写示例学习，可在WebStorm 直接运行ReactJs</p>
