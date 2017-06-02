@@ -7,13 +7,6 @@
     </url>
 
     <url>
-        <loc>http://little-byte.com/categories/Android/</loc>
-        <lastmod>2017-06-01T10:50:43.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://little-byte.com/categories/OpenResty/</loc>
         <lastmod>2017-06-01T10:50:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,6 +16,13 @@
     <url>
         <loc>http://little-byte.com/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
         <lastmod>2017-06-01T10:50:59.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/categories/Android/</loc>
+        <lastmod>2017-06-02T09:13:07.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
