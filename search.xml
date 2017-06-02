@@ -4,6 +4,59 @@
   
     
     <entry>
+      <title><![CDATA[React Native 开发经验与常见问题总结]]></title>
+      <url>http://little-byte.com/2017/06/02/React-Native-%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>接触React Native才一个月有余，对这种“Learn once，Write anywhere”的移动端开发框架越来越喜爱。不敢说自己一个多月就掌握了React Native，这里只是将自己一个多月踩过的坑和一些经验心得以及教训分享记录于此，并且今后也会不断补充完善。</p>
+<h2 id="使用WebStorm开发React-Native经验"><a href="#使用WebStorm开发React-Native经验" class="headerlink" title="使用WebStorm开发React Native经验"></a>使用WebStorm开发React Native经验</h2><p><strong>WebStorm</strong>个人感觉真的是最好的ReactNative 开发工具之一，特别是当你有用过AndroidStudio的情况下，使用WebStorm绝对是最好的选择。</p>
+<h3 id="通过配置直接运行项目"><a href="#通过配置直接运行项目" class="headerlink" title="通过配置直接运行项目"></a>通过配置直接运行项目</h3><p><img src="http://om2bpqram.bkt.clouddn.com/1496385059159.jpg" alt="enter description here" title="1496385059159.jpg"><br>点击WebStorm右上角的小方框中的向下箭头，选中<strong>Edit Configurations..</strong></p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496385172176.jpg" alt="enter description here" title="1496385172176.jpg"><br>在弹出来的窗口中点击左上角的“<strong>+</strong>”按钮，下拉选项选择“<strong>React Native</strong>”</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496385351796.jpg" alt="enter description here" title="1496385351796.jpg"><br>右侧“name”项随意填写，自己能够区分就好，默认运行目标平台为Android，因此如果要运行的目标平台为iOS将Target Platform改为iOS即可。</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496385541594.jpg" alt="enter description here" title="1496385541594.jpg"></p>
+<p>最后WebStorm可运行项目中如下</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496385604021.jpg" alt="enter description here" title="1496385604021.jpg"><br>选中Android，点击右侧的绿色三角形按钮就可在Android模拟器或真机运行ReactNative项目了，iOS同理。<br>注意，直接运行是在你的电脑上已经安装安卓模拟器或者Xcode的前提下,运行Android端时需提前启动好Android模拟器，否则会提示找不到设备，iOS则无需该操作。此外在WebStorm中运行最常见的问题是8081端口被占用</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496386478708.jpg" alt="enter description here" title="1496386478708.jpg"><br>此时需要在终端中通过lsof命令查找占用端口的进程PID 并通过kill 命令杀死进程。</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496386543687.jpg" alt="enter description here" title="1496386543687.jpg"><br>最好的避免方式是在需要停止运行，点击停止按钮来停止项目运行</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496387018926.jpg" alt="enter description here" title="1496387018926.jpg"></p>
+<h3 id="在WebStorm中调试"><a href="#在WebStorm中调试" class="headerlink" title="在WebStorm中调试"></a>在WebStorm中调试</h3><p>在编写的js文件中需要调试的地方打下断点，然后通过WebStorm运行项目，ReactNative运行在模拟器运行成功后中调出调试菜单，点击<strong>Debug JS Remotely</strong>（此处使用iOS作为示例，Android基本一致）</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496387265719.jpg" alt="enter description here" title="1496387265719.jpg"></p>
+<p>此时就可以根据需要进行调试了。快捷键F8是单步调试，F7是步进调试<br>ps.在HTML标签块中打下的断点是无效的</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1496387859119.jpg" alt="enter description here" title="1496387859119.jpg"></p>
+<h2 id="ListView组件中的坑"><a href="#ListView组件中的坑" class="headerlink" title="ListView组件中的坑"></a>ListView组件中的坑</h2><p>如果你在ListView中renderHeader方法中加载图片，那么在Android端会无法显示，iOS端则不会有此问题。这是React Native中的一个Bug，还没有彻底解决，详见：<br><strong><a href="https://github.com/facebook/react-native/issues/4455" target="_blank" rel="external">Render a ViewPagerAndroid in ListView.renderHeader() that the elements under ViewPagerAndroid will not display</a></strong><br>目前暂时的解决方案如下：</p>
+<figure class="highlight vbscript-html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ListView</div><div class="line">  ...</div><div class="line">  removeClippedSubviews=&#123;false&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<p> removeClippedSubviews 属性，表示如果子 View 超出可视区域，是否自动移除，默认是 true,因此设置为false显然是牺牲了一定的性能。不过目前的做法是使用FlatList替代ListView，因为FlatList比ListView提升了很多（不过FlatList是否同样有这个Bug还未测试）</p>
+<h2 id="TextInput组件中的坑"><a href="#TextInput组件中的坑" class="headerlink" title="TextInput组件中的坑"></a>TextInput组件中的坑</h2><p>TextInput在iOS端必须设置<strong>height</strong>属性，否则无法获取焦点，Android端可不设置。</p>
+<h2 id="关于布局与屏幕适配的一点经验"><a href="#关于布局与屏幕适配的一点经验" class="headerlink" title="关于布局与屏幕适配的一点经验"></a>关于布局与屏幕适配的一点经验</h2><ul>
+<li>基本上所有组件都最好不指定宽高（图片除外，必须指定宽高否则显示图片原大小，不好控制），不指定宽高的组件将保持原大小，这点类似Android中的wrap_content.</li>
+<li>React Native组件大小的数值单位是<strong>dp</strong>，不需要再进行转换</li>
+</ul>
+<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p>style中的<strong>flex</strong>是一个很有用的属性，有点类似Android中layout_weight属性</p>
+<ul>
+<li>在根布局中指定<strong>flex：1</strong>则表示占满全屏（view默认宽度为100%）</li>
+<li>如果一层布局中有多个组件其中只有一个组件指定了<strong>flex:1</strong>则表示该组件将占据其余组件外所剩余的空间</li>
+<li>如果一层布局中有多个组件指定了<strong>flex:1</strong>,则表示这些组件所占比相同</li>
+</ul>
+<h3 id="布局方向flexDirection"><a href="#布局方向flexDirection" class="headerlink" title="布局方向flexDirection"></a>布局方向flexDirection</h3><p>ReactNative默认布局方向为纵向column，此时justifyContent指定纵向对齐方式，alignItems指定横向对齐方式<br>横向需指定为row，justifyContent指定横向对齐方向，alignItems指定纵向对齐方式</p>
+<h3 id="Image的调整模式resizeMode"><a href="#Image的调整模式resizeMode" class="headerlink" title="Image的调整模式resizeMode"></a>Image的调整模式resizeMode</h3><p>resizeMode属性可调整图片相对于容器的展现方式，默认为cover模式。</p>
+<h2 id="页面卡顿的一个解决办法"><a href="#页面卡顿的一个解决办法" class="headerlink" title="页面卡顿的一个解决办法"></a>页面卡顿的一个解决办法</h2><p>InteractionManager.runAfterInteractions 方法可以让我们在页面的所有动画执行完后再获取数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">componentDidMount() &#123;</div><div class="line">       InteractionManager.runAfterInteractions(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">           <span class="keyword">this</span>._getListData().done()</div><div class="line">       &#125;)</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>cover模式</strong>只求在显示比例不失真的情况下填充整个显示区域。可以对图片进行放大或者缩小，超出显示区域的部分不显示，<br>也就是说，图片可能部分会显示不了。<br> <strong>contain模式</strong>是要求显示整张图片, 可以对它进行等比缩小,<br>图片会显示完整,可能会露出Image控件的底色。 如果图片宽高都小于控件宽高，则不会对图片进行放大。<br><strong>stretch模式</strong>不考虑保持图片原来的宽,高比.填充整个Image定义的显示区域,这种模式显示的图片可能会畸形和失真。<br> <strong>center模式,</strong> 9月11号的0.33版本才支持，contain模式基础上支持等比放大。</p>
+</blockquote>
+<h2 id="其他，以后会继续补充完善…"><a href="#其他，以后会继续补充完善…" class="headerlink" title="其他，以后会继续补充完善…"></a>其他，以后会继续补充完善…</h2>]]></content>
+      
+        
+        <tags>
+            
+            <tag> react-native </tag>
+            
+            <tag> 经验 </tag>
+            
+            <tag> 常见问题 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ReactNative-CodePush实践小结]]></title>
       <url>http://little-byte.com/2017/06/01/ReactNative-CodePush%E5%AE%9E%E8%B7%B5%E5%B0%8F%E7%BB%93/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>CodePush</strong>是微软提供的一套可用于React Native和Cordova的热更新服务，国内也有类似的服务<strong>Pushy</strong>，从关注度和使用人数来说，CodePush完胜于Pushy（截至目前，CodePush在Github上Star数2900+，Pushy Star数600+，毕竟大公司的产品更让开发者心里有底，但CodePush是否真的绝对比Pushy要好不做评价）</p>
@@ -107,11 +160,10 @@
     
     <entry>
       <title><![CDATA[ReactNative学习经验小结]]></title>
-      <url>http://little-byte.com/2017/05/15/ReactNative%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/</url>
+      <url>http://little-byte.com/2017/05/15/ReactNative%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
       <content type="html"><![CDATA[<h2 id="第一步-React-js基础学习"><a href="#第一步-React-js基础学习" class="headerlink" title="第一步 React.js基础学习"></a>第一步 React.js基础学习</h2><p>只推荐<strong><a href="http://www.runoob.com/react/react-tutorial.html" target="_blank" rel="external">菜鸟教程</a></strong>，章节分明有条理，讲解得也非常清晰，并且附带可以在线运行的实例。学习时间：0.5～1天基本可以完成学习</p>
 <h2 id="第二步-ES6-语法特性"><a href="#第二步-ES6-语法特性" class="headerlink" title="第二步 ES6 语法特性"></a>第二步 ES6 语法特性</h2><p>推荐搭配WebStorm 编写示例学习，可在WebStorm 直接运行ReactJs</p>
-<p>推荐文章：<br><strong><a href="http://www.jianshu.com/p/ebfeb687eb70#" target="_blank" rel="external">30分钟掌握ES6/ES2015核心内容</a></strong><br><a href="http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8" target="_blank" rel="external"><strong>React/React Native 的ES5 ES6写法对照表</strong></a></p>
-<p>除了上面这两篇文章提到的内容，最好还了解一下比较有用的包括集合，proxy，promise。</p>
+<p>推荐文章：<br><strong><a href="http://www.jianshu.com/p/ebfeb687eb70#" target="_blank" rel="external">30分钟掌握ES6/ES2015核心内容</a></strong><br><a href="http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8" target="_blank" rel="external"><strong>React/React Native 的ES5 ES6写法对照表</strong></a><br><a id="more"></a><br>除了上面这两篇文章提到的内容，最好还了解一下比较有用的包括集合，proxy，promise。</p>
 <blockquote>
 <p>ps.ES6语法特性的学习是必不可少的，否则代码看得一知半解的对后续的学习会有很大阻碍。</p>
 </blockquote>
