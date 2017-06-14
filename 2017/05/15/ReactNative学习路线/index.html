@@ -191,7 +191,7 @@
 <h3 id="开源项目运行常见问题"><a href="#开源项目运行常见问题" class="headerlink" title="开源项目运行常见问题"></a>开源项目运行常见问题</h3><ul>
 <li><strong>npm install 错误</strong></li>
 </ul>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> ERR! Darwin <span class="number">15.6</span><span class="number">.0</span></div><div class="line"><span class="built_in">npm</span> ERR! argv <span class="string">"/usr/local/bin/node"</span> <span class="string">"/usr/local/bin/npm"</span> <span class="string">"install"</span></div><div class="line"><span class="built_in">npm</span> ERR! node v4<span class="number">.2</span><span class="number">.1</span></div><div class="line"><span class="built_in">npm</span> ERR! <span class="built_in">npm</span> v2<span class="number">.14</span><span class="number">.7</span></div><div class="line"><span class="built_in">npm</span> ERR! code EPEERINVALID</div><div class="line"></div><div class="line"><span class="built_in">npm</span> ERR! peerinvalid The package react@<span class="number">16.0</span><span class="number">.0</span>-alpha<span class="number">.6</span> does <span class="keyword">not</span> satisfy its siblings<span class="string">' peerDependencies requirements!</span></div><div class="line">....</div><div class="line">....</div></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">npm ERR! Darwin 15.6.0</div><div class="line">npm ERR! argv &quot;/usr/local/bin/node&quot; &quot;/usr/local/bin/npm&quot; &quot;install&quot;</div><div class="line">npm ERR! node v4.2.1</div><div class="line">npm ERR! npm v2.14.7</div><div class="line">npm ERR! code EPEERINVALID</div><div class="line"></div><div class="line">npm ERR! peerinvalid The package react@16.0.0-alpha.6 does not satisfy its siblings&apos; peerDependencies requirements!</div><div class="line">....</div><div class="line">....</div></pre></td></tr></table></figure>
 <p>这种情况通常是依赖库版本不兼容造成的。</p>
 <pre><code>- 删除node_modules文件夹，重新运行npm install
 - 仔细查看版本要求提示，修改为要求的版本即可，有时候版本号通常会有个“^”，某些情况下去掉该符号并指定确定的版本也可以解决问题。 
@@ -454,6 +454,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">sinopia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">私有npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -466,11 +474,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常见问题</a>
+                <a href="javascript:void(0)" class="js-tag color4">codePush</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,10 +490,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">codePush</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
@@ -499,6 +499,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Lua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">常见问题</a>
               </li>
             
             <div class="clearfix"></div>
