@@ -6,17 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://little-byte.com">
-  <title>Archives | little-byte写字台</title>
+  <title>React Native多入口调研 | little-byte写字台</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你看不到的天空">
-<meta property="og:type" content="website">
-<meta property="og:title" content="little-byte写字台">
-<meta property="og:url" content="http://little-byte.com/archives/index.html">
+  <meta name="description" content="前言最近在做原生项目集成RN的时候遇到了一个问题：如果从原生进入RN有多个入口或者说从原生不同的地方可以进入到不同的RN组件，该怎么做？由此展开了调研。在调研后得出了两种方案：  注册多个根组件入口 只注册一个入口，根据RN传递属性选择进入不同的组件">
+<meta name="keywords" content="react-native,多入口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native多入口调研">
+<meta property="og:url" content="http://little-byte.com/2017/06/29/React-Native多入口调研/index.html">
 <meta property="og:site_name" content="little-byte写字台">
-<meta property="og:description" content="你看不到的天空">
+<meta property="og:description" content="前言最近在做原生项目集成RN的时候遇到了一个问题：如果从原生进入RN有多个入口或者说从原生不同的地方可以进入到不同的RN组件，该怎么做？由此展开了调研。在调研后得出了两种方案：  注册多个根组件入口 只注册一个入口，根据RN传递属性选择进入不同的组件">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498698996729.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498702889477.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498702933557.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498704640207.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498705128634.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498705496655.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498705512138.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498705557832.jpg">
+<meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1498705584383.jpg">
+<meta property="og:updated_time" content="2017-06-30T09:31:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="little-byte写字台">
-<meta name="twitter:description" content="你看不到的天空">
+<meta name="twitter:title" content="React Native多入口调研">
+<meta name="twitter:description" content="前言最近在做原生项目集成RN的时候遇到了一个问题：如果从原生进入RN有多个入口或者说从原生不同的地方可以进入到不同的RN组件，该怎么做？由此展开了调研。在调研后得出了两种方案：  注册多个根组件入口 只注册一个入口，根据RN传递属性选择进入不同的组件">
+<meta name="twitter:image" content="http://om2bpqram.bkt.clouddn.com/1498698996729.jpg">
   
     <link rel="alternative" href="/atom.xml" title="little-byte写字台" type="application/atom+xml">
   
@@ -146,36 +158,96 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React-Native多入口调研" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/29/React-Native多入口调研/" class="archive-article-date">
-  	<time datetime="2017-06-29T09:25:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/29/React-Native多入口调研/">React Native多入口调研</a>
+    <h1 class="article-title" itemprop="name">
+      React Native多入口调研
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/29/React-Native多入口调研/" class="archive-article-date">
+  	<time datetime="2017-06-29T09:25:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在做原生项目集成RN的时候遇到了一个问题：如果从原生进入RN有多个入口或者说从原生不同的地方可以进入到不同的RN组件，该怎么做？由此展开了调研。<br>在调研后得出了两种方案：</p>
+<ol>
+<li><strong>注册多个根组件入口</strong></li>
+<li><strong>只注册一个入口，根据RN传递属性选择进入不同的组件</strong><a id="more"></a>
+<h2 id="多注册入口"><a href="#多注册入口" class="headerlink" title="多注册入口"></a>多注册入口</h2>这种方案是在index.android.js /index.ios.js 中注册多个跟组件。<br>下面以android为例。<br>Android项目集成RN此处不具体展开，请参考：<br><a href="http://www.tuicool.com/articles/fiaqMjv" target="_blank" rel="external">React Native植入原生Android应用的流程解析</a><br><a href="http://www.tuicool.com/articles/ym2q2eU" target="_blank" rel="external">弹射起步：Android原生项目集成React Native模块</a></li>
+</ol>
+<p>注册多个根组件方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  AppRegistry,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">import</span> RNEntrance1 <span class="keyword">from</span> <span class="string">'./js/RNEntrance1'</span></div><div class="line"><span class="keyword">import</span> RNEntrance2 <span class="keyword">from</span> <span class="string">'./js/RNEntrance2'</span></div><div class="line"><span class="keyword">import</span> RNEntrance3 <span class="keyword">from</span> <span class="string">'./js/RNEntrance3'</span></div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'RNActivity1'</span>, () =&gt; RNEntrance1);</div><div class="line">AppRegistry.registerComponent(<span class="string">'RNActivity2'</span>, () =&gt; RNEntrance2);</div><div class="line">AppRegistry.registerComponent(<span class="string">'RNActivity3'</span>, () =&gt; RNEntrance3);</div></pre></td></tr></table></figure>
+<p>相应的，在Android原生模块中需要建立多个对应的ReactActivity，并在<code>getMainComponentName</code>方法中返回对应的跟组件名字，如下图：</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498698996729.jpg" alt="enter description here"></p>
+<h2 id="单注册入口"><a href="#单注册入口" class="headerlink" title="单注册入口"></a>单注册入口</h2><p>这种方式是在进入RN之前设置传递属性，然后在根组件获取这个属性，并跟进属性的不同进入到不同的入口。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">RNActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</div><div class="line">    @Override</div><div class="line">    protected <span class="built_in">String</span> getMainComponentName() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"RNActivity"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected ReactActivityDelegate createReactActivityDelegate() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ReactActivityDelegate(<span class="keyword">this</span>, getMainComponentName()) &#123;</div><div class="line">            @Nullable</div><div class="line">            @Override</div><div class="line">            protected Bundle getLaunchOptions() &#123;</div><div class="line">                <span class="keyword">return</span> MainApplication.getBundle();</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>getLaunchOptions</strong>方法可以设置传递给跟组件的属性值（Bundle类型），此处以传递int值为例。<br>具体的MainApplication.java 代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> <span class="keyword">implements</span> <span class="title">ReactApplication</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">final</span> ReactNativeHost mReactNativeHost = <span class="keyword">new</span> ReactNativeHost(<span class="keyword">this</span>) &#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> BuildConfig.DEBUG;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">                    <span class="keyword">new</span> MainReactPackage()</div><div class="line">            );</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ReactNativeHost <span class="title">getReactNativeHost</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mReactNativeHost;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Bundle sBundle = <span class="keyword">new</span> Bundle();</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> RN_ENTRANCE_1 = <span class="number">1</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> RN_ENTRANCE_2 = <span class="number">2</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> RN_ENTRANCE_3 = <span class="number">3</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setRNInitProps</span><span class="params">(<span class="keyword">int</span> entrance)</span> </span>&#123;</div><div class="line">        sBundle.putInt(<span class="string">"entrance"</span>,entrance);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bundle <span class="title">getBundle</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> sBundle;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>而在index.android.js 中获取this.props.entrance并判断不同条件下进入不同的RN页面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;AppRegistry,&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">import</span> RNEntrance1 <span class="keyword">from</span> <span class="string">'./js/RNEntrance1'</span></div><div class="line"><span class="keyword">import</span> RNEntrance2 <span class="keyword">from</span> <span class="string">'./js/RNEntrance2'</span></div><div class="line"><span class="keyword">import</span> RNEntrance3 <span class="keyword">from</span> <span class="string">'./js/RNEntrance3'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Root</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    render() &#123;</div><div class="line">        <span class="keyword">switch</span> (<span class="keyword">this</span>.props.entrance) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">                <span class="keyword">return</span> &lt;RNEntrance1 /&gt;</div><div class="line">            case 2:</div><div class="line">                return &lt;RNEntrance2 /&gt;</div><div class="line">            case 3:</div><div class="line">                return &lt;RNEntrance3 /&gt;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">AppRegistry.registerComponent('RNActivity', () =&gt; Root);</div></pre></td></tr></table></figure>
+<h2 id="两种方式对比"><a href="#两种方式对比" class="headerlink" title="两种方式对比"></a>两种方式对比</h2><h3 id="多注册入口方式"><a href="#多注册入口方式" class="headerlink" title="多注册入口方式"></a>多注册入口方式</h3><p>第一种方案在网上据说内存开销太大，因此针对两者进行内存测试。<br>刚打开APP内存占用如图：</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498702889477.jpg" alt="enter description here"></p>
+<p>打开第一个RN页面，内存会明显拔高，并且随时间会缓慢增加，而后在一段时间后会明显降低并又开始缓慢增加，如此循环。</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498702933557.jpg" alt="enter description here"></p>
+<p>在退出这个RN页面后内存占用并没有明显下降<br>在打开第二个页面之后页面会有个明显下降而后又迅速增多(如下图V字形曲线)</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498704640207.jpg" alt="enter description here"></p>
+<p>退出第二个RN页面再打开第三个RN页面，内存占用会较明显下降而后又迅速增多(如下图V字形曲线)</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498705128634.jpg" alt="enter description here"></p>
+<p>最高内存占用在4M左右。</p>
+<h3 id="单注册入口方式"><a href="#单注册入口方式" class="headerlink" title="单注册入口方式"></a>单注册入口方式</h3><p>未加载jsbundle之前：</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498705496655.jpg" alt="enter description here"><br>加载第一个RN页面，内存占用曲线明显拔高，并且随时间逐渐增多，但在一段时间后会跌落，如此循环</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498705512138.jpg" alt="enter description here"><br>退出RN页面，内存占用没有明显减少<br>加载第二个RN页面，加载后增加，过后会减少，退出RN页面内存占用没有明显减少</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498705557832.jpg" alt="enter description here"><br>加载第三个RN页面，加载后增加，过后会减少，退出RN页面内存占用没有明显减少。APP最高占用内存也在4M左右</p>
+<p><img src="http://om2bpqram.bkt.clouddn.com/1498705584383.jpg" alt="enter description here"></p>
+<p><strong>总体来说：单注册入口和多注册入口，占用内存没有明显区别</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>撰写不易，感谢支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://om2bpqram.bkt.clouddn.com/1496315121369.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://om2bpqram.bkt.clouddn.com/1496315224712.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,406 +263,100 @@
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/20/React-Native-单元测试实践/" class="archive-article-date">
-  	<time datetime="2017-06-20T09:40:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/20/React-Native-单元测试实践/">React Native 单元测试实践</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-native</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">单元测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/14/NPM私有仓库Sinopia搭建及使用/" class="archive-article-date">
-  	<time datetime="2017-06-14T10:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/14/NPM私有仓库Sinopia搭建及使用/">NPM私有仓库Sinopia搭建及使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sinopia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">私有npm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/React-Native-开发经验与常见问题总结/" class="archive-article-date">
-  	<time datetime="2017-06-02T09:09:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/React-Native-开发经验与常见问题总结/">React Native 开发经验与常见问题总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-native</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">常见问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/01/ReactNative-CodePush实践小结/" class="archive-article-date">
-  	<time datetime="2017-06-01T08:51:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/01/ReactNative-CodePush实践小结/">ReactNative-CodePush实践小结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-native</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">codePush</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/15/ReactNative学习路线/" class="archive-article-date">
-  	<time datetime="2017-05-15T04:20:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/15/ReactNative学习路线/">ReactNative学习路线</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-native</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习路线</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/28/Tinker调研/" class="archive-article-date">
-  	<time datetime="2017-02-28T10:55:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/28/Tinker调研/">Tinker调研</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tinker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">热修复</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Android/" class="article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/20/openresty-rsa加解密库/" class="archive-article-date">
-  	<time datetime="2016-08-20T08:53:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/20/openresty-rsa加解密库/">openresty-rsa加解密库</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RSA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Lua</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://little-byte.com/2017/06/29/React-Native多入口调研/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/OpenResty/" class="article-tag-list-link color5">OpenResty</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/10/Github-Hexo搭建博客全记录/" class="archive-article-date">
-  	<time datetime="2016-08-10T08:53:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/10/Github-Hexo搭建博客全记录/">Github+Hexo搭建博客全记录</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">YeLee</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/博客搭建/" class="article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/20/React-Native-单元测试实践/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React Native 单元测试实践</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
   
   
-    </div></section>
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://little-byte.com/2017/06/29/React-Native多入口调研/", 
+    sourceId: "React-Native多入口调研",
+    productKey: "f1163ef6360b4f26b588363e194d28ee",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -613,8 +379,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

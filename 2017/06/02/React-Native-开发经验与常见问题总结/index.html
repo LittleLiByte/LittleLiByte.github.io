@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1496387018926.jpg">
 <meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1496387265719.jpg">
 <meta property="og:image" content="http://om2bpqram.bkt.clouddn.com/1496387859119.jpg">
-<meta property="og:updated_time" content="2017-06-02T09:13:06.000Z">
+<meta property="og:updated_time" content="2017-06-30T09:31:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Native 开发经验与常见问题总结">
 <meta name="twitter:description" content="接触React Native才一个月有余，对这种“Learn once，Write anywhere”的移动端开发框架越来越喜爱。不敢说自己一个多月就掌握了React Native，这里只是将自己一个多月踩过的坑和一些经验心得以及教训分享记录于此，并且今后也会不断补充完善。 使用WebStorm开发React Native经验WebStorm个人感觉真的是最好的ReactNative 开发工具之一">
@@ -70,8 +70,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -96,11 +94,9 @@
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/onebyte" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+					<a class="segmentfault" target="_blank" href="#" title="segmentfault"><i class="icon-segmentfault"></i></a>
 		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
-					<a class="mail" target="_blank" href="mailto:lizhj@corp.21cn.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="mailto:18825111150@189.cn" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -128,8 +124,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,11 +133,9 @@
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/onebyte" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+						<a class="segmentfault" target="_blank" href="#" title="segmentfault"><i class="icon-segmentfault"></i></a>
 			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
-						<a class="mail" target="_blank" href="mailto:lizhj@corp.21cn.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="mailto:18825111150@189.cn" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -152,9 +144,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -220,11 +210,27 @@
 <li>如果一层布局中有多个组件指定了<strong>flex:1</strong>,则表示这些组件所占比相同</li>
 </ul>
 <h3 id="布局方向flexDirection"><a href="#布局方向flexDirection" class="headerlink" title="布局方向flexDirection"></a>布局方向flexDirection</h3><p>ReactNative默认布局方向为纵向column，此时justifyContent指定纵向对齐方式，alignItems指定横向对齐方式<br>横向需指定为row，justifyContent指定横向对齐方向，alignItems指定纵向对齐方式</p>
-<h3 id="Image的调整模式resizeMode"><a href="#Image的调整模式resizeMode" class="headerlink" title="Image的调整模式resizeMode"></a>Image的调整模式resizeMode</h3><p>resizeMode属性可调整图片相对于容器的展现方式，默认为cover模式。</p>
-<h2 id="页面卡顿的一个解决办法"><a href="#页面卡顿的一个解决办法" class="headerlink" title="页面卡顿的一个解决办法"></a>页面卡顿的一个解决办法</h2><p>InteractionManager.runAfterInteractions 方法可以让我们在页面的所有动画执行完后再获取数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">componentDidMount() &#123;</div><div class="line">       InteractionManager.runAfterInteractions(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">           <span class="keyword">this</span>._getListData().done()</div><div class="line">       &#125;)</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Image的调整模式resizeMode"><a href="#Image的调整模式resizeMode" class="headerlink" title="Image的调整模式resizeMode"></a>Image的调整模式resizeMode</h3><p>resizeMode属性可调整图片相对于容器的展现方式，默认为cover模式。根据实际情况灵活选择resizeMode。</p>
 <blockquote>
 <p><strong>cover模式</strong>只求在显示比例不失真的情况下填充整个显示区域。可以对图片进行放大或者缩小，超出显示区域的部分不显示，<br>也就是说，图片可能部分会显示不了。<br> <strong>contain模式</strong>是要求显示整张图片, 可以对它进行等比缩小,<br>图片会显示完整,可能会露出Image控件的底色。 如果图片宽高都小于控件宽高，则不会对图片进行放大。<br><strong>stretch模式</strong>不考虑保持图片原来的宽,高比.填充整个Image定义的显示区域,这种模式显示的图片可能会畸形和失真。<br> <strong>center模式,</strong> 9月11号的0.33版本才支持，contain模式基础上支持等比放大。</p>
 </blockquote>
+<p><strong>一点经验</strong>：</p>
+<ul>
+<li>如果要求图片完整展示，并且图片比较接近纯色或者画面条理不是十分清晰，可以选择stretch。</li>
+<li>如果原图片大于展示区域，使用默认的cover会导致一部分图片区域丢失(丢失区域与设置的justifyContent和alignItems有关），如果图片边缘区域不重要可以使用cover模式</li>
+<li>使用contain模式最好保证图片展示区域与图片的宽高比例相同，否则会有意想不到的适配问题。</li>
+</ul>
+<h2 id="iOS-获取网络信息API-的坑"><a href="#iOS-获取网络信息API-的坑" class="headerlink" title="iOS 获取网络信息API 的坑"></a>iOS 获取网络信息API 的坑</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NetInfo.isConnected.fetch().done(<span class="function">(<span class="params">isConnected</span>) =&gt;</span> &#123;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在iOS中，这个方法返回值一直是false，在Android中正常</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NetInfo.fetch().done( <span class="function">(<span class="params">connectionInfo</span>) =&gt;</span> &#123; &#125; );</div></pre></td></tr></table></figure>
+<p>在iOS中，这个方法返回值一直是unknown，在Android中正常</p>
+<p>因此可以通过添加网络监听来判断网络是否可用。<br>当然还有其他办法，具体可参考：<a href="https://github.com/facebook/react-native/issues/8615" target="_blank" rel="external">https://github.com/facebook/react-native/issues/8615</a><br>以下是其中以一个解决办法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFirstConnectivityChange</span>(<span class="params">isConnected</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (!sConnected) &#123;</div><div class="line">	 <span class="comment">// do action</span></div><div class="line">  	&#125;</div><div class="line">  	NetInfo.isConnected.removeEventListener(<span class="string">'change'</span>, handleFirstConnectivityChange);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (Platform.OS === <span class="string">'ios'</span>) &#123;</div><div class="line">  	NetInfo.isConnected.addEventListener(<span class="string">'change'</span>, handleFirstConnectivityChange);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  	NetInfo.isConnected.fetch().then(<span class="function"><span class="params">isConnected</span> =&gt;</span> &#123;</div><div class="line">  	<span class="keyword">if</span> (!sConnected) &#123;</div><div class="line">    	<span class="comment">// do action</span></div><div class="line"> 	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h2><p>在项目中遇到将yyyy-MM-dd hh:mm:ss格式的时间字符串转换成Date类型遇到了问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(timeStr);</div></pre></td></tr></table></figure>
+<p>该方法在Android/iOS模拟器或真机上转换出来的date 值为 Invalid Date(Android)/NaN(iOS)，在调试模式这个值的却完全正常的。如今也让人不得解。解决办法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(timeStr.replace(<span class="regexp">/-/g</span>, <span class="string">"/"</span>)));</div></pre></td></tr></table></figure></p>
+<p>使用该方法进行时间转换。</p>
+<h2 id="页面卡顿的一个解决办法"><a href="#页面卡顿的一个解决办法" class="headerlink" title="页面卡顿的一个解决办法"></a>页面卡顿的一个解决办法</h2><p>InteractionManager.runAfterInteractions 方法可以让我们在页面的所有动画执行完后再获取数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">componentDidMount() &#123;</div><div class="line">       InteractionManager.runAfterInteractions(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">           <span class="keyword">this</span>._getListData().done()</div><div class="line">       &#125;)</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="RN加载首屏白屏明显"><a href="#RN加载首屏白屏明显" class="headerlink" title="RN加载首屏白屏明显"></a>RN加载首屏白屏明显</h2><p>使用预加载。白屏出现主要是因为jsBundle加载到内存中耗时会比较长。RN原本的做法是第一次打开RN页面后才去加载jsBundle，而我们可以用空间换时间到做法，在应用启动时就加载jsBundle到内存中。</p>
 <h2 id="其他，以后会继续补充完善…"><a href="#其他，以后会继续补充完善…" class="headerlink" title="其他，以后会继续补充完善…"></a>其他，以后会继续补充完善…</h2>
       
 
@@ -477,14 +483,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">YeLee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">sinopia</a>
               </li>
              
@@ -493,11 +491,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">YeLee</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">单元测试</a>
+                <a href="javascript:void(0)" class="js-tag color4">多入口</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,6 +512,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">常见问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">单元测试</a>
               </li>
              
               <li class="article-tag-list-item">
