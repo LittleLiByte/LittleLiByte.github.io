@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://little-byte.com">
-  <title>Tag: RSA | little-byte写字台</title>
+  <title>在原有Android项目中快速集成React Native | little-byte写字台</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你看不到的天空">
-<meta property="og:type" content="website">
-<meta property="og:title" content="little-byte写字台">
-<meta property="og:url" content="http://little-byte.com/tags/RSA/index.html">
+  <meta name="description" content="前言对于现有的大多数项目来说都不是从头构建的，而要在原有项目的基础上引入React Native则肯定和用react-native init xxx创建工程不同。因此下面就来说下具体操作。不过在真正开始之前还是要先说明一下工具配置。  NodeJS：选择对应的系统下载并安装，安装完即可在终端运行npm 命令。 配置源，众所周知因为墙的原因，所以最好配置国内的源。配置方法如下：  12npm con">
+<meta name="keywords" content="react-native,android,集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在原有Android项目中快速集成React Native">
+<meta property="og:url" content="http://little-byte.com/2017/12/15/在原有Android项目中快速集成React-Native/index.html">
 <meta property="og:site_name" content="little-byte写字台">
-<meta property="og:description" content="你看不到的天空">
+<meta property="og:description" content="前言对于现有的大多数项目来说都不是从头构建的，而要在原有项目的基础上引入React Native则肯定和用react-native init xxx创建工程不同。因此下面就来说下具体操作。不过在真正开始之前还是要先说明一下工具配置。  NodeJS：选择对应的系统下载并安装，安装完即可在终端运行npm 命令。 配置源，众所周知因为墙的原因，所以最好配置国内的源。配置方法如下：  12npm con">
+<meta property="og:updated_time" content="2017-12-27T02:02:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="little-byte写字台">
-<meta name="twitter:description" content="你看不到的天空">
+<meta name="twitter:title" content="在原有Android项目中快速集成React Native">
+<meta name="twitter:description" content="前言对于现有的大多数项目来说都不是从头构建的，而要在原有项目的基础上引入React Native则肯定和用react-native init xxx创建工程不同。因此下面就来说下具体操作。不过在真正开始之前还是要先说明一下工具配置。  NodeJS：选择对应的系统下载并安装，安装完即可在终端运行npm 命令。 配置源，众所周知因为墙的原因，所以最好配置国内的源。配置方法如下：  12npm con">
   
     <link rel="alternative" href="/atom.xml" title="little-byte写字台" type="application/atom+xml">
   
@@ -146,79 +148,224 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-在原有Android项目中快速集成React-Native" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/20/openresty-rsa加解密库/" class="archive-article-date">
-  	<time datetime="2016-08-20T08:53:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/20/openresty-rsa加解密库/">openresty-rsa加解密库</a>
+    <h1 class="article-title" itemprop="name">
+      在原有Android项目中快速集成React Native
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/12/15/在原有Android项目中快速集成React-Native/" class="archive-article-date">
+  	<time datetime="2017-12-15T06:30:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于现有的大多数项目来说都不是从头构建的，而要在原有项目的基础上引入React Native则肯定和用<code>react-native init xxx</code>创建工程不同。因此下面就来说下具体操作。不过在真正开始之前还是要先说明一下工具配置。</p>
+<ul>
+<li><a href="http://nodejs.cn/download/" target="_blank" rel="external">NodeJS</a>：选择对应的系统下载并安装，安装完即可在终端运行npm 命令。</li>
+<li>配置源，众所周知因为墙的原因，所以最好配置国内的源。<br>配置方法如下：</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm config <span class="keyword">set</span> <span class="keyword">registry</span> https://<span class="keyword">registry</span>.npm.taobao.org --<span class="keyword">global</span></div><div class="line">npm config <span class="keyword">set</span> disturl https://npm.taobao.org/dist --<span class="keyword">global</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="1-加入package-json文件以及index-android-js文件"><a href="#1-加入package-json文件以及index-android-js文件" class="headerlink" title="1.加入package.json文件以及index.android.js文件"></a>1.加入package.json文件以及index.android.js文件</h2><p><strong>一般地，我们可以在项目根目录下创建package.json文件以及index.android.js文件。</strong></p>
+<ul>
+<li>package.json文件类似与Android中的build.gradle文件，在其中主要配置了React Native所需的依赖库以及一些脚本语句。以下的代码可以看作是一个package.json文件的模版,版本号可以根据需要而定。</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"XXX"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</div><div class="line">  <span class="attr">"private"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"start"</span>: <span class="string">"node node_modules/react-native/local-cli/cli.js start"</span>,</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"jest"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"react"</span>: <span class="string">"16.0.0"</span>,</div><div class="line">    <span class="attr">"react-native"</span>: <span class="string">"0.50.3"</span>,</div><div class="line">    <span class="attr">"react-native-device-info"</span>: <span class="string">"^0.12.1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"babel-jest"</span>: <span class="string">"21.2.0"</span>,</div><div class="line">    <span class="attr">"babel-preset-react-native"</span>: <span class="string">"4.0.0"</span>,</div><div class="line">    <span class="attr">"jest"</span>: <span class="string">"21.2.1"</span>,</div><div class="line">    <span class="attr">"react-test-renderer"</span>: <span class="string">"16.0.0"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"jest"</span>: &#123;</div><div class="line">    <span class="attr">"preset"</span>: <span class="string">"react-native"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>index.android.js 文件是RN程序的入口文件。通常index.android.js 文件如下：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  AppRegistry,View,Text,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</div><div class="line">    <span class="comment">//...其他方法</span></div><div class="line">    render()&#123;</div><div class="line">        <span class="keyword">return</span>(</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;Text&gt;this is React Native  Page&lt;/Text&gt;</div><div class="line">            &lt;/View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">	 <span class="comment">//...其他方法</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'XXX'</span>, () =&gt; App);</div></pre></td></tr></table></figure>
+<p>然后，在该目录下打开终端，运行 <code>npm i</code> 命令，安装React Native 所需的依赖，安装完成后会在根目录下创建node_modules文件夹，下载的依赖就在这个文件夹下。到此，第一步的工作已经完成了。</p>
+<p><strong>—–分割线——</strong><br>实际上我们不会将RN代码放到Android工程里，因为在一般的公司项目中，使用SVN或者Git进行管理，客户端目录下一般都会有Android和iOS两个目录区分两个端。而React Native作为一个跨平台的框架，放在Android或者iOS目录里都不太合适。因此个人认为比较好的做法是在Android和iOS同级目录创建一个ReactNative目录，放置RN项目的代码。因此目录结构大致如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├──Android</div><div class="line">	├──trunk</div><div class="line">	├──branches</div><div class="line">	└──tags	</div><div class="line">├──iOS      </div><div class="line">	├──trunk</div><div class="line">	├──branches</div><div class="line">	└──tags            			</div><div class="line">└──ReactNative	</div><div class="line">	├──trunk</div><div class="line">	├──branches</div><div class="line">	└──tags</div></pre></td></tr></table></figure></p>
+<p>此时，RN项目的代码包括package.json文件以及index.android.js文件都是在trunk目录下，自然地，需要在trunk目录打开终端，运行运行 <code>npm i</code> 命令，安装React Native 所需的依赖，而node_modules文件夹也自然会在该文件夹内创建。</p>
+<h2 id="2-在Android项目中配置ReactNative依赖"><a href="#2-在Android项目中配置ReactNative依赖" class="headerlink" title="2.在Android项目中配置ReactNative依赖"></a>2.在Android项目中配置ReactNative依赖</h2><h3 id="对于package-json文件在Android-工程中的情况"><a href="#对于package-json文件在Android-工程中的情况" class="headerlink" title="对于package.json文件在Android 工程中的情况"></a>对于package.json文件在Android 工程中的情况</h3><p>首先编辑在项目目录下<strong>build.gradle</strong>文件。</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class">allprojects </span>&#123;</div><div class="line">    <span class="class">repositories </span>&#123;</div><div class="line">        google()</div><div class="line">        jcenter()</div><div class="line">		<span class="comment">//添加这个仓库</span></div><div class="line">        <span class="class">maven </span>&#123;</div><div class="line">            <span class="comment">// All of React Native (JS, Android binaries) is installed from npm</span></div><div class="line">            url <span class="string">"$rootDir/node_modules/react-native/android"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在编辑app目录下的<strong>build.gradle</strong>文件，添加React Native依赖。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">implementation</span> <span class="string">'com.facebook.react:react-native:0.50.3'</span></div></pre></td></tr></table></figure>
+<p>注意该版本号需要与package.json文件中配置的RN版本号保持一致。<br>之所以需要在项目的<strong>build.gradle</strong>文件中添加maven配置，是因为Android项目默认的依赖包的源jcenter()并不包含最新版的React Native（它只到0.20.1）。</p>
+<h3 id="对ReactNative独立目录情况"><a href="#对ReactNative独立目录情况" class="headerlink" title="对ReactNative独立目录情况"></a>对ReactNative独立目录情况</h3><p>与第一种情况并无太大区别，只是RN的maven仓库路径有所不同。因为通过版本控制拉取下来的工程位置各有不同，为了避免开发人员对项目目录下的<strong>build.gradle</strong>文件编辑冲突，推荐使用如下方式：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//加载<span class="built_in">local</span>.<span class="built_in">properties</span>配置</div><div class="line">Properties <span class="built_in">properties</span> = <span class="built_in">new</span> Properties()</div><div class="line">InputStream inputStream = project.rootProject.file('<span class="built_in">local</span>.<span class="built_in">properties</span>').newDataInputStream();</div><div class="line"><span class="built_in">properties</span>.<span class="built_in">load</span>(inputStream)</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">        maven &#123;</div><div class="line">            // All of React Native (JS, Android binaries) <span class="built_in">is</span> installed from npm</div><div class="line">            url <span class="built_in">properties</span>.getProperty('reactnative.dir')</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中<code>local.properties</code>文件不需要提交版本控制，并在其中添加一个reactnative.dir属性，属性值为RN的android工程目录路径，例如在我的项目中</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reactnative.dir=<span class="regexp">/Users/</span>littlebyte<span class="regexp">/svn/</span>ReactNative<span class="regexp">/ReactNative/</span>node_modules<span class="regexp">/react-native/</span>android</div></pre></td></tr></table></figure>
+<h2 id="3-创建RN视图承载的Activity或Fragment"><a href="#3-创建RN视图承载的Activity或Fragment" class="headerlink" title="3.创建RN视图承载的Activity或Fragment"></a>3.创建RN视图承载的Activity或Fragment</h2><h3 id="创建RN视图承载的Activity"><a href="#创建RN视图承载的Activity" class="headerlink" title="创建RN视图承载的Activity"></a>创建RN视图承载的Activity</h3><p>public class MyReactActivity extends ReactActivity {</p>
+<pre><code>@Override
+protected String getMainComponentName() {
+    //该返回值需要与N程序的入口文件index.android.js中的注册的名字相同
+    return &quot;XXX&quot;;
+}
+</code></pre><p>}</p>
+<h3 id="创建RN视图承载的Fragment"><a href="#创建RN视图承载的Fragment" class="headerlink" title="创建RN视图承载的Fragment"></a>创建RN视图承载的Fragment</h3><p>与Activity不同,在Fragment中加载RN有点不一样。但在Android中加载RN，无论是在Activity还是Fragment，加载的都只是一个View而已。而给Fragment设置View，只需要Fragment的onCreateView返回RN的View即可。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String COMPONENT_NAME = <span class="string">"MyFragment"</span>;</div><div class="line">    <span class="keyword">private</span> ReactRootView mReactRootView;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onAttach(context);</div><div class="line">        mReactRootView = <span class="keyword">new</span> ReactRootView(context);</div><div class="line">        mReactRootView.startReactApplication(</div><div class="line">                getReactNativeHost().getReactInstanceManager(),</div><div class="line">                COMPONENT_NAME,</div><div class="line">                <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreateView(inflater, container, savedInstanceState);</div><div class="line">        <span class="keyword">return</span> mReactRootView;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="keyword">if</span> (mReactRootView != <span class="keyword">null</span>) &#123;</div><div class="line">            mReactRootView.unmountReactApplication();</div><div class="line">            mReactRootView = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (getReactNativeHost().hasInstance()) &#123;</div><div class="line">            getReactNativeHost().getReactInstanceManager().onHostDestroy(getActivity()</div><div class="line">            );</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> ReactNativeHost <span class="title">getReactNativeHost</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> ((ReactApplication) getActivity().getApplication()).getReactNativeHost();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> ReactInstanceManager <span class="title">getReactInstanceManager</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> getReactNativeHost().getReactInstanceManager();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>而后Fragment该怎么用就怎么用。</p>
+<h2 id="4-修改Application"><a href="#4-修改Application" class="headerlink" title="4.修改Application"></a>4.修改Application</h2><p>修改自定义的 Application ，实现 ReactApplication 接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> <span class="keyword">implements</span> <span class="title">ReactApplication</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">final</span> ReactNativeHost mReactNativeHost = <span class="keyword">new</span> ReactNativeHost(<span class="keyword">this</span>) &#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> BuildConfig.DEBUG;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">                    <span class="keyword">new</span> MainReactPackage()</div><div class="line">            );</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ReactNativeHost <span class="title">getReactNativeHost</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mReactNativeHost;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-修改Application，添加相应的权限以及Activity声明"><a href="#5-修改Application，添加相应的权限以及Activity声明" class="headerlink" title="5.修改Application，添加相应的权限以及Activity声明"></a>5.修改Application，添加相应的权限以及Activity声明</h2><p>RN需要添加以下权限：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.SYSTEM_ALERT_WINDOW"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>除了声明自定义的Activity，还需要添加DevSettingsActivity，用来修改RN的相关设置。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">"com.facebook.react.devsupport.DevSettingsActivity"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>至此，Android原生项目集成RN的工作就基本完成了。</p>
+<h2 id="6-调试"><a href="#6-调试" class="headerlink" title="6.调试"></a>6.调试</h2><p>要调试首先需要启动RN的本地服务器。<code>在package.json</code>文件所在目录打开终端，运行<code>react-native start</code>命令即可启动本地服务器。然后安装并运行App。<br>如果使用模拟器调试则可以直接运行打开RN的页面，而如果使用真机调试还需要摇一摇弹出设置菜单，点击<strong>Dev Settings</strong>，设置<strong>Debug server host&amp;port for device</strong>,填入<code>你电脑的ip:8081</code>即可。<br>之后就可以愉快的调试运行了。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>撰写不易，感谢支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://om2bpqram.bkt.clouddn.com/1496315121369.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://om2bpqram.bkt.clouddn.com/1496315224712.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RSA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-native</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Lua</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集成</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/OpenResty/" class="article-tag-list-link color5">OpenResty</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://little-byte.com/2017/12/15/在原有Android项目中快速集成React-Native/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/07/03/Android中预加载React-Native-jsBundle/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android中预加载React Native jsBundle</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://little-byte.com/2017/12/15/在原有Android项目中快速集成React-Native/", 
+    sourceId: "在原有Android项目中快速集成React-Native",
+    productKey: "f1163ef6360b4f26b588363e194d28ee",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -241,9 +388,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",

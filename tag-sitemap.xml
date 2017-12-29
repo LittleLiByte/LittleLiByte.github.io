@@ -107,15 +107,29 @@
     </url>
 
     <url>
+        <loc>http://little-byte.com/tags/android/</loc>
+        <lastmod>2017-12-27T02:02:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://little-byte.com/tags/%E9%9B%86%E6%88%90/</loc>
+        <lastmod>2017-12-27T02:02:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://little-byte.com/tags/react-native/</loc>
-        <lastmod>2017-07-19T11:02:33.000Z</lastmod>
+        <lastmod>2017-12-29T04:18:41.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://little-byte.com/tags/%E9%A2%84%E5%8A%A0%E8%BD%BD/</loc>
-        <lastmod>2017-07-19T11:02:33.000Z</lastmod>
+        <lastmod>2017-12-29T04:18:41.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
